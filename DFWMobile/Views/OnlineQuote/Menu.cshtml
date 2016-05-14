@@ -1,0 +1,76 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>DFW JOB QUOTE ESTIMATE [Beta]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A demo of some techniques for developing responsive tables." />
+    <meta name="author" content="Simon Elvery" />
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ladda-bootstrap/0.9.4/ladda-themeless.min.css" />
+</head>
+<body>
+    <div> 
+        <a href="#" id="print-quote" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-print"></i> Print Quote</a>
+        <button type="button" id="email-quote" class="btn btn-sm btn-info ladda-button" data-style="zoom-out">
+            <span class="ladda-label"><i class="glyphicon glyphicon-envelope"></i> Email Quote</span>
+        </button>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script>
+        var ROOT = '@Url.Content(Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host + (Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port))' + '/mobile';
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ladda-bootstrap/0.9.4/spin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ladda-bootstrap/0.9.4/ladda.min.js"></script>
+
+    <script>
+        $("#print-quote").click(function () {
+            $("#print-quote").html('Loading printable PDF...');
+            //window.location.href = ROOT + '/OnlineQuote/print/@ViewBag.OnlineQuoteID'
+            window.open(ROOT + '/OnlineQuote/print/@ViewBag.OnlineQuoteID', '_top');
+        });
+
+        $("#email-quote").click(function () {
+            var l = Ladda.create(this);
+            l.start();
+
+            $.ajax({
+                url: ROOT + "/OnlineQuote/EmailQuote",
+                type: "GET",
+                data: "id=" + '@ViewBag.OnlineQuoteID'
+            })
+            .done(function (data) {
+                if (data == 'err') {
+                    alert('Oops! We encountered a problem sending your quote. Please refresh this page and try again.');
+                    $('#email-quote').prop('disabled', false);
+                }
+                else {
+                    l.stop();
+                    alert("Quote successfully sent. Kindly check your e-mail. If you don't see DFW Quote message in your inbox, consider checking you spam folder and mark us NOT SPAM.")
+                    $('#email-quote').prop('disabled', true);
+                }
+            })
+            .fail(function (xhr, ajaxOptions, thrownError) {
+                console && console.log("request failed");
+            });
+        });
+
+    </script>
+
+</body>
+</html>

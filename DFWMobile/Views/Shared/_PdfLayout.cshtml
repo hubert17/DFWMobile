@@ -1,0 +1,92 @@
+﻿@{
+    Layout = null;     
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DFW Quote @ViewBag.Title</title>
+    @*<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">*@
+    <link rel="stylesheet" href="@Url.Content("/Content/bootstrap.min.css")">
+
+    <style>
+        .collabel {
+            width: 30%;
+        }
+    </style>
+
+    <style>
+        body {            
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 16px;
+            line-height: 1.42857143;
+            color: #333;
+            background-color: #fff; 
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        header h2{
+            font-family: "Felix Titling", "Perpetua Titling MT", serif;
+        }
+        h1{
+            font-family:Haettenschweiler,"Helvetica Neue",Helvetica,Arial,sans-serif;
+        }
+        h2 {
+            text-align:center;
+            font-variant:small-caps;
+        }
+
+        /*From Bootstrap 3*/
+        .container {
+          width: 970px;
+          padding-right: 50px;
+          padding-left: 50px;
+          margin-right: auto;
+          margin-left: auto;   
+          padding-top: 5px;                
+        }
+        .row {
+          margin-right: -15px;
+          margin-left: -15px;
+        }
+        .col-sm-6 {
+          float:left;
+          width: 50%;
+        }
+        .table {
+          width: 100%;
+          max-width: 100%;
+          margin-bottom: 20px;
+          border-top: none;
+        }
+        .table>tbody>tr>td, .table>tbody>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+          padding: 8px;
+          line-height: 1.42857143;
+          vertical-align: top;
+          border-top: none;
+          border-bottom: 1px solid #ddd;
+        }
+        .tbl-header {
+            background-color:gray;
+            color:white;
+        }
+        .table .no-border {
+            border: none !important;
+        }
+
+
+    </style>
+    @RenderSection("css", required: false)
+</head>
+<body>
+    @RenderBody()
+
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>*@
+
+</body>
+</html>

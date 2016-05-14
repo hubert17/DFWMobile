@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Slab Promo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section banner
+{
+
+    <!-- START #page-header -->
+    <div id="header-banner" style="">
+        <div class="banner-overlay">
+            <div class="container">
+                <div class="row">
+                    <section class="col-sm-12">
+                        <h1 class="text-upper">Slab Promo</h1>
+                    </section>
+
+                    <!-- breadcrumbs -->
+                    <section class="col-sm-12">
+                        <ol class="breadcrumb">
+                            <li><i class="icon-home"></i>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>Slab Promo</li>
+                        </ol>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END #page-header -->
+}
+
+
+
+
+<div id="_SlabPromo">
+    <!-- SlabPromo partial view content will be inserted here -->
+    @{Html.RenderPartial("_SlabPromo");}
+</div>
+

@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>@ViewBag.Title | DFW Wholesale Granite [beta] - Fort Worth</title>
+    <meta name="description" content="Your super savings place for granite in Fort Worth Texas. Granite Fort Worth has the best granite available at rates that can not be beat. " />
+
+    @Styles.Render("~/Content/css")
+    @RenderSection("css", required: false)
+
+    @Scripts.Render("~/bundles/modernizr")    
+
+    <script type="text/javascript" async defer
+        src="https://apis.google.com/js/platform.js?publisherid=104083893800853782086">
+    </script>
+
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-3 col-xs-3">
+                    <a href="@Url.Action("Index")" id="logo" class="hidden-md hidden-lg">DFW Wholesale Granite</a>
+                    <a href="@Url.Action("Index")" id="logolong" class="hidden-xs hidden-sm">DFW Wholesale Granite</a>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-9">
+                    <div class="pull-right hidden-xs" id="phone">Call Us <strong>(817) 300-3298</strong></div>
+                    <ul id="top_nav">
+                        <li><a href="#" data-toggle="modal" data-target="#weathermodal"><span class="hidden-xs"><i class="icon-sun-1"></i>10011 Harmon Road, Suite 101, Forth Worth, Texas</span></a><span class="hidden-sm hidden-md hidden-lg">Call Us <strong><a href="tel:8173003298">(817) 300-3298</a></strong></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header><!-- End header -->
+
+    <nav>
+        <div class="container" id="menu_container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="mobnav-btn"></div>
+                    <ul class="sf-menu sf-js-enabled sf-arrows">
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        @*<li>@Html.ActionLink("FAQ", "FAQ.aspx", "../")</li>*@
+                        <li class="normal_drop_down">
+                            <a href="#">Countertops</a>
+                            <div class="mobnav-subarrow"></div>
+                            <ul>
+                                @*<li>@Html.ActionLink("Granite", "GraniteColors.aspx", "../")</li>
+                                <li>@Html.ActionLink("Marble", "MarbleColors.aspx", "../")</li>
+                                <li>@Html.ActionLink("Edges", "GraniteEdges.aspx", "../")</li>
+                                <li>@Html.ActionLink("Sinks", "Sinks.aspx", "../")</li>*@
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Online Quote", "Index", "OnlineQuote")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    </ul>
+                    <!-- End language selector -->
+                </div><!-- End col md 12 -->
+            </div><!-- End row -->
+        </div> <!-- End menu_container -->
+    </nav><!-- End nav menu -->
+
+
+    @RenderSection("banner", required: false)
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <!-- End container -->
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 footer_nav">
+                    <h4>Quick links</h4>
+                    <div class="col-gabs-50">
+                        <ul>
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li><a href="#">Granite</a></li>
+                            <li><a href="#">Marble</a></li>
+                            <li><a href="#">Edges</a></li>
+                            <li><a href="#">Sinks</a></li>
+                            <li><a href="#">Visit Our Showroom</a></li>
+                            <li><a href="#">Gallery of Kitchens</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-gabs-40">
+                        <ul>
+                            <li><a href="#">Granite Care</a></li>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">Angie's List</a></li>
+                            <li>@Html.ActionLink("Online Quote", "Index", "OnlineQuote")</li>
+                            <li><a href="#">Slab Promo</a></li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6" id="contact_footer">
+                    <h4>Contacts</h4>
+                    <p>Feel free to call us or send a message, we will reply shortly.</p>
+                    <address>
+                        <ul>
+                            <li><i class="icon-home"></i><a href="https://www.google.com.ph/maps/place/DFW+Wholesale+Granite+Fort+Worth/&#64;32.9188594,-97.4080068,12z/data=!4m17!1m14!4m13!1m6!1m2!1s0x864dd923403fd13f:0xd9b7e05c5364e793!2sDFW+Wholesale+Granite+Fort+Worth,+10011+Harmon+Rd+%23101,+Fort+Worth,+TX+76177,+United+States!2m2!1d-97.334189!2d32.918737!1m5!1m1!1s0x0:0xd9b7e05c5364e793!2m2!1d-97.334189!2d32.918737!3m1!1s0x864dd923403fd13f:0xd9b7e05c5364e793">10011 Harmon Road - Suite 101</a></li>
+                            <li><i class="icon-address">&nbsp;</i>Fort Worth, Texas </li>
+                            <li><i class="icon-phone"></i><a href="tel:8173003298">(817) 300-3298</a> </li>
+                            <li>
+                                <i class="icon-email"></i> <a href="mailto:info@granitesouthlake.com">
+                                    info@granitesouthlake.com
+                                    <script type="text/javascript">
+                                    (function () { try { var s, a, i, j, r, c, l, b = document.getElementsByTagName("script"); l = b[b.length - 1].previousSibling; a = l.getAttribute('data-cfemail'); if (a) { s = ''; r = parseInt(a.substr(0, 2), 16); for (j = 2; a.length - j; j += 2) { c = parseInt(a.substr(j, 2), 16) ^ r; s += String.fromCharCode(c); } s = document.createTextNode(s); l.parentNode.replaceChild(s, l); } } catch (e) { } })();
+                                    </script>
+                                </a>
+                            </li>
+                            <li>
+                                <i class="icon-email"></i> <a href="mailto:info@granitefortworth.net">
+                                    info@granitefortworth.net
+                                    <script type="text/javascript">
+                                    (function () { try { var s, a, i, j, r, c, l, b = document.getElementsByTagName("script"); l = b[b.length - 1].previousSibling; a = l.getAttribute('data-cfemail'); if (a) { s = ''; r = parseInt(a.substr(0, 2), 16); for (j = 2; a.length - j; j += 2) { c = parseInt(a.substr(j, 2), 16) ^ r; s += String.fromCharCode(c); } s = document.createTextNode(s); l.parentNode.replaceChild(s, l); } } catch (e) { } })();
+                                    </script>
+                                </a>
+                            </li>
+                        </ul>
+                    </address>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <h4>Follow Us</h4>
+                    <ul id="follow_us">
+                        <li><a href="#"><i class="icon-facebook"></i></a></li>
+                        <li><a href="#"><i class="icon-twitter"></i></a></li>
+                        <li><a href="https://google.com/+GraniteSouthlakeFortworth"><i class="icon-gplus-1"></i></a></li>
+                        <li><div class="g-plusone" data-href="http://www.granitesouthlake.com/"></div></li>                        
+                    </ul>
+                </div>
+                @*<div class="col-md-4 col-sm-6">
+                    <h4>Accepts Payment From</h4>
+                    <ul id="follow_us">
+                        <li><img src="@Url.Content("~/img/cc_logo.png")" /></li>
+                    </ul>
+                </div>*@
+            </div><!-- End row -->
+            <hr class="rope_2">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p id="copy">
+                        &copy; @DateTime.Now.Year - DFW WHOLESALE GRANITE<br />
+                        Mobile Web Development by <a href="mailto:webmaster@granitesouthlake.com">Gabs</a>
+                    </p>                    
+                </div>
+            </div><!-- End row -->
+        </div><!-- End container -->
+    </footer><!-- End footer -->
+    <div id="toTop" style="display: none;">Back to top</div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script>
+        var ROOT = '@Url.Content(Request.Url.Scheme + System.Uri.SchemeDelimiter + Request.Url.Host + (Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port))' + '/mobile';
+    </script>
+
+
+
+    <script type='text/javascript'>
+        $(function () {
+            $('header').affix({
+                offset: { top: -50 }
+            });
+            $('nav').affix();
+        });
+    </script>
+
+    <script type="text/javascript">
+        $('div.modal').on('show.bs.modal', function () {
+            var modal = this;
+            var hash = modal.id;
+            window.location.hash = hash;
+            window.onhashchange = function () {
+                if (!location.hash) {
+                    $(modal).modal('hide');
+                }
+            }
+        });
+
+        $('div.modal').on('hide', function () {
+            var hash = this.id;
+            history.pushState('', document.title, window.location.pathname);
+        });
+    </script>
+
+
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

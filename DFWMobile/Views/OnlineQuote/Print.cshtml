@@ -1,0 +1,293 @@
+﻿@model DFWMobile.Models.ViewModels.PrintQuoteVM
+
+@{
+    ViewBag.Title = "[ " + Model.OnlineQuoteID + " - " + Model.CustomerName + " ]";
+    Layout = "~/Views/Shared/_PdfLayout.cshtml";
+    var imagePath = Server.MapPath("~/Content/Images");
+    ViewBag.CompressLayout = (Model.Slab.Count + Model.InstallFab.Count + Model.Sink.Count + Model.ServiceJ.Count) > 6;
+
+    ViewBag.marginCompress = String.Empty;
+    if(ViewBag.CompressLayout)
+    {
+        ViewBag.marginCompress = ".table td {padding: 1.5px !important; }"; 
+    }        
+}
+
+@section css
+{
+    <style>
+        @ViewBag.marginCompress
+
+    </style>
+}
+
+
+<!-- 16:9 aspect ratio -->
+@*<div style="display:@ViewBag.ShowMenu;height:50px;" class="col-md-12 text-center" id="dfw-menu">
+        <iframe style="border:none;" src="http://granitesouthlake.com/mobile/OnlineQuote/menu/@Model.OnlineQuoteID"></iframe>
+</div>*@
+
+
+
+<div class="container">
+    <div class="row">
+        <header>
+            <div class="col-sm-12">
+                <h2>WHOLESALE GRANITE DFW</h2>
+                <p>
+                    <em>
+                        10011 Harmon Road, Unit 101, Fort Worth Texas 76177<br />
+                        Tel: (817) 300­-3298 &nbsp;&nbsp;&nbsp; Email: info@granitesouthlake.com<br />
+                    </em>
+                </p>
+                <h1><strong>JOB QUOTE</strong></h1>
+            </div>
+        </header>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <table class="table">
+                <tr>
+                    <td class="collabel">QUOTE #:</td>
+                    <td><strong>@Model.OnlineQuoteID</strong></td>
+                </tr>
+                <tr>
+                    <td>CUSTOMER:</td>
+                    <td><strong>@Model.CustomerName</strong></td>
+                </tr>
+                <tr>
+                    <td>PHONE:</td>
+                    <td>@Model.Phone</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-sm-6">
+            <table class="table">
+                <tr>
+                    <td class="collabel">ADDRESS:<strong>&nbsp;</strong></td>
+                    <td>@Model.Address</td>
+                </tr>
+                <tr>
+                    <td><strong>&nbsp;</strong></td>
+                    <td>@Model.Address2</td>
+                </tr>
+                <tr>
+                    <td>EMAIL:</td>
+                    <td>@Model.Email</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    @if (!Model.FabPricePrintOveride)
+    {
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-12 tbl-header">
+                    <h2>Slab</h2>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>STONE</th>
+                            <th class="text-center" width="20%">QTY</th>
+                            <th class="text-right" width="20%">PRICE</th>
+                            <th class="text-right" width="20%">TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Slab)
+                        {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td class="text-center">@String.Format("{0:0.#}", item.Quantity)</td>
+                            <td class="text-right">@String.Format("{0:C}", item.Price)</td>
+                            <td class="text-right">@String.Format("{0:C}", item.Total)</td>
+                        </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right"><strong>Subtotal:</strong></td>
+                            <td class="text-right">@String.Format("{0:C}", Model.TotalSlab)</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-12 tbl-header">
+                <h2>Install and Fabrication</h2>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>STONE</th>
+                        <th class="text-center" width="20%">QTY</th>
+                        <th class="text-right" width="20%">PRICE</th>
+                        <th class="text-right" width="20%">TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.InstallFab)
+                    {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td class="text-center">@String.Format("{0:0.#}", item.Quantity)</td>
+                        <td class="text-right">@String.Format("{0:C}", item.Price)</td>
+                        <td class="text-right">@String.Format("{0:C}", item.Total)</td>
+                    </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="text-right"><strong>Subtotal:</strong></td>
+                        <td class="text-right">@String.Format("{0:C}", Model.TotalInstallFab)</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-12 tbl-header">
+                <h2>Sink</h2>
+            </div>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th width="15%">CATALOG</th>
+                            <th>SINK</th>
+                            <th class="text-center" width="5%">QTY</th>
+                            <th class="text-right">PRICE</th>
+                            <th class="text-right">TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Sink.Count > 0)
+                        {
+                            foreach (var item in Model.Sink)
+                            {
+                                <tr>
+                                    <td>@item.Catalog</td>
+                                    <td>@item.Name</td>
+                                    <td class="text-center">@String.Format("{0:0.#}", item.Quantity)</td>
+                                    <td class="text-right">@String.Format("{0:C}", item.Price)</td>
+                                    <td class="text-right">@String.Format("{0:C}", item.Total)</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>***</td>
+                                <td>No sink availed.</td>
+                                <td class="text-center">@String.Format("{0:0.#}", 0)</td>
+                                <td class="text-right">@String.Format("{0:C}", 0.00)</td>
+                                <td class="text-right">@String.Format("{0:C}", 0.00)</td>
+                            </tr>
+                        }
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td class="text-right"><strong>Subtotal:</strong></td>
+                            <td class="text-right">@String.Format("{0:C}", Model.TotalSink)</td>
+                        </tr>
+                    </tfoot>
+                </table>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-12 tbl-header">
+                <h2>Services</h2>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>SERVICE</th>
+                        <th class="text-center" width="15%">QTY</th>
+                        <th class="text-right" width="15%">PRICE</th>
+                        <th class="text-right" width="15%">TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.ServiceJ.Count > 0)
+                    {
+                        foreach (var item in Model.ServiceJ)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td class="text-center">@String.Format("{0:0.#}", item.Quantity)</td>
+                                <td class="text-right">@String.Format("{0:C}", item.Price)</td>
+                                <td class="text-right">@String.Format("{0:C}", item.Total)</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>No services availed.</td>
+                            <td class="text-center">@String.Format("{0:0.#}", 0)</td>
+                            <td class="text-right">@String.Format("{0:C}", 0.00)</td>
+                            <td class="text-right">@String.Format("{0:C}", 0.00)</td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="text-right"><strong>Subtotal:</strong></td>
+                        <td class="text-right">@String.Format("{0:C}", Model.TotalService)</td>
+                    </tr>
+                    @if (ViewBag.CompressLayout)
+                    {
+                        <tr class="no-border">
+                            <td class="no-border"></td>
+                            <td class="no-border"></td>
+                            <td class="no-border"></td>
+                            <td class="no-border"></td>
+                        </tr>
+                    }
+                    <tr style="font-size:large;">
+                        <td class="no-border" colspan="2" width="50%">NOTES: <p style="font-size:large;line-height:20px">@Model.Notes </p></td>
+                        <td class="no-border text-right">
+                            <strong>TOTAL COST:</strong>
+                            @*<span style="display:@ViewBag.AdminView"><strong>DEPOSIT:</strong></span>
+                            <span style="display:@ViewBag.AdminView"><strong>AMOUNT DUE:	</strong></span>*@
+                        </td>
+                        <td class="no-border text-right">
+                            <strong>@String.Format("{0:c}", Model.TotalCost)</strong>
+                            @*<span style="display:@ViewBag.AdminView"><strong>@String.Format("{0:c}", Model.TotalDeposit)</strong></span>
+                            <span style="display:@ViewBag.AdminView"><strong>@String.Format("{0:c}", Model.AmountDue)</strong></span>*@
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12" style="font-size:small;font-style:italic;color:gray;">
+            Granite is a natural product and varies in color and patterns. We do not do plumbing, electrical or carpentry work. This quote includes cost of
+            stone. If you elect to keep existing tile we are not responsible for damage to existing tile or fit to finished granite countertops.
+        </div>
+    </div>
+
+</div>

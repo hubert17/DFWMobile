@@ -1,0 +1,32 @@
+#top-header,
+.caption-yellow,
+.plan-banner,
+.submit-btn input,
+.ft-data,
+.btn-primary:hover, .btn-primary:focus,
+.featured-btm,
+.nav-tabs,
+.offer-bottom,
+.btn-primary,
+.dropcap p:first-child:first-letter, .highlight,
+.list-style3 li:before, .list-style4 li:before,
+.pricing-table:hover, .pricing-table-featured, .pricing-table li.table-heading-multiple, .pricing-tables-2 .pricing-table li.table-heading-multiple:nth-child(2n+1), .pricing-tables-2 .pricing-table li.table-heading-multiple:nth-child(2n), .pricing-tables-2 .pricing-table li.table-heading, .pricing-tables-3 .pricing-table li.table-heading, .pricing-tables-2 .pricing-table li.table-heading-two{
+    background-color: #FFE200;
+}
+
+
+#ft-footer a,
+#header-banner h1,
+.featured-cr,
+.tl-author-title,
+.breadcrumb a:hover,
+#main-menu  li:hover > a {
+    color: #FFE200;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+#main-menu li ul{
+	border-color:  #FFE200;
+}

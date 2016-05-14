@@ -1,0 +1,599 @@
+﻿@model DFWMobile.Models.ViewModels.OnlineQuoteVM
+
+@{
+    ViewBag.Title = "Online Quote";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section css
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/formValidation.min.css")" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ladda-bootstrap/0.9.4/ladda-themeless.min.css" />
+
+    <style>
+        .input-xs {
+            height: 22px;
+            padding: 5px 5px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 3px;
+        }
+
+        #modalMeasures .modal-dialog {
+            max-width: 400px;
+        }
+
+        #dfwMedia {
+            overflow-y: hidden;
+            padding: 0;
+            z-index: 10;
+            margin-bottom: 10px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            border-radius: 20px;
+            border: 5px solid #b00000;
+            background: rgba(43,227,23,0.0);
+            -webkit-box-shadow: #B3B3B3 2px 2px 2px;
+            -moz-box-shadow: #B3B3B3 2px 2px 2px;
+            box-shadow: #B3B3B3 2px 2px 2px;
+        }
+
+        #vidMeasure {
+            position: relative;
+            top: -20px;
+        }
+
+            #vidMeasure video {
+                padding: 0;
+                z-index: 1;
+            }
+
+        .embed-responsive.embed-responsive-4by3 {
+            margin-bottom: -30px;
+        }
+
+        .table-responsive {
+            border: 0 none;
+        }
+
+        .panel-primary {
+            border-color: #6A0000;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+            .panel-primary > .panel-heading {
+                color: #fff;
+                background-color: #6A0000;
+                border-color: #6A0000;
+            }
+
+                .panel-primary > .panel-heading h1, h2, h3, h4, h5, h6 {
+                    color: #fff;
+                }
+
+        .panel-body {
+            padding: 10px 1px 10px 1px;
+        }
+
+        .selectedRow {
+            background: rgba(176, 0, 0, 0.10);
+        }
+
+        #ajaxLoader {
+            display: none;
+            z-index: 100;
+            position: relative;
+            top: 30px;
+            margin-bottom: 60px;
+        }
+
+        #ShowCustomerModal, #submit-quote { margin-right: 0; margin-bottom: 0; }
+        #ShowCustomerModal { height: 50px !important;  }
+
+        /* Image Box Style */
+        #modalSinks .box {
+            /*border: 5px solid #fff;*/
+            border: 5px solid #780000;
+            cursor: pointer;
+            min-height: 200px;
+            float: left;
+            margin: 5px;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            -webkit-box-shadow: 1px 1px 1px 1px #ccc;
+            -moz-box-shadow: 1px 1px 1px 1px #ccc;
+            box-shadow: 1px 1px 1px 1px #ccc;
+        }
+
+            #modalSinks .box img {
+                position: absolute;
+                left: 0;
+                width: 102%;
+                min-width: 200px;
+            }
+            /* Caption Common Style */
+            #modalSinks .box .caption {
+                /*background-color: rgba(30, 0, 0, 0.70);*/
+                background-color: rgba(120, 0, 0, 0.60);
+                position: absolute;
+                color: #fff;
+                z-index: 100;
+                left: 0;
+                /** Caption 1: Simple **/
+                height: 30px;
+                width: 100%;
+                display: block;
+                bottom: 0px;
+                line-height: 25pt;
+                text-align: center;
+            }
+
+        #modalSinks .modal-body {
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+        }
+
+        #modalCustomer .modal-body h4 {
+            color: #000000;
+        }
+
+        .btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled.focus, .btn-primary[disabled].focus, fieldset[disabled] .btn-primary.focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active {
+          background-color: #b02020;
+          border-color: #8a1c1c;
+        }
+
+        .text-danger {
+            color:#b00000;
+            font-size:smaller;
+        }
+        .text-info {
+            font-size:smaller;
+        }
+        #pCustomerHelpBlock {
+            color:#b00000;
+            font-size:medium;
+            font-style:italic;
+            margin-bottom:0;
+        }
+        .fv-icon-no-label {
+          top: 20px !important;
+        }
+        .modal-footer .fv-icon-no-label {
+          top: 0 !important;
+        }    
+        .modal-footer .popover { width: 170px;}  
+        .modal-footer .popover-title { color: #780000 }
+        .modal-footer .popover-content { font-size:smaller; }  
+
+        #header-banner .banner-overlay .container { text-align: center; }
+        .breadcrumb { color: #B3B3B3; }
+        .breadcrumb a { color: #ff6f6f; }
+    </style>
+}
+
+
+
+
+
+@section banner
+{
+
+    <!-- START #page-header -->
+    <div id="header-banner" style="">
+        <div class="banner-overlay">
+            <div class="container">
+                <div class="row">
+                    <section class="col-sm-12">
+                        <h1 class="text-upper">Online Quote</h1>
+                    </section>
+
+                    <!-- breadcrumbs -->
+                    <section class="col-sm-12">
+                        <ol class="breadcrumb">
+                            <li><i class="icon-home"></i>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>Online Quote</li>
+                        </ol>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END #page-header -->
+}
+
+
+<div ng-app="gabsApp" ng-cloak>
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading text-center">
+                <h2>Slab</h2>
+                <h4>Select a stone color, enter SF quantity or measures and choose the right edge for your countertops.</h4>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <div id="dfwMedia" class="col-md-12">
+                        <div id="ajaxLoader" class="text-center"><img src="~/img/loader.gif" /></div>
+                        <img id="imgSlab" class="img-responsive @ViewBag.ImageVisible" src="http://granitesouthlake.com/images/Slabs/@ViewBag.ImageFileName" alt="">
+                        <div id="vidMeasure" class="embed-responsive embed-responsive-4by3 @ViewBag.ImageHidden">
+                            <video width="100%" controls="" poster="@Url.Content("~/vid/countertop_measure.jpg")" class="embed-responsive-item" eq-attached="true">
+                                <source src="@Url.Content("~/vid/countertop_measure.mp4")" type="video/mp4">
+                                <source src="@Url.Content("~/vid/countertop_measure.webm")" type="video/webm">
+                                <img class="img-responsive" src="http://placehold.it/800x480" alt="">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div id="divCountertop" ng-controller="MeasureCtrl">
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <!-- Select Basic -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ddlSlabColorID">Select Stone</label>
+                                    <div class="col-md-8">
+                                        <select id="ddlSlabColorID" name="ddlSlabColorID" class="form-control">
+                                            <option value=""></option>
+                                            @foreach (var item in Model.SlabColors)
+                                            {
+                                                if (ViewBag.SlabColorID == item.SlabColorID.ToString())
+                                                {
+                                                    <option value="@item.SlabColorID" selected>@item.SlabColorNamePrice</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.SlabColorID">@item.SlabColorNamePrice</option>
+                                                }
+                                            }
+                                        </select>
+                                        <p class="help-block text-danger hidden">Please select Stone.</p>
+                                        <input type="hidden" id="SlabPromoOveride" value="@ViewBag.SlabPromo" />
+                                    </div>
+                                </div>
+
+                                <!-- Appended Input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="SFQuantity">Square Feet Quantity</label>
+                                    <div class="col-md-5 col-sm-10 col-xs-10">
+                                        <div class="input-group">
+                                            <input type="text" id="SFQuantity" name="SFQuantity" class="form-control" ng-if="total() <= 0" />
+                                            <input type="text" id="SFQuantity" name="SFQuantity" class="form-control" ng-if="total() > 0" ng-model="total()" />
+                                            <div class="input-group-btn">
+                                                <a href="#modalMeasures" data-toggle="modal" class="btn btn-primary">Add Measures</a>
+                                            </div>
+                                        </div>
+                                        <p class="help-block text-danger hidden">Please enter SF quantity.</p>
+                                        <p class="help-block text-info hidden" id="SfMsg" >If you know your total square feet, enter it here. Click <b>Add Measures</b> to use our Square Feet Calculator by entering individual measure of your countertops. <span class="hidden-sm hidden-md hidden-lg">Scroll up a bit to watch <b>How To Measure</b> video.</span></p>
+                                    </div>
+                                </div>
+
+                                <!-- Edge -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="ddlEdges">Select Edge</label>
+                                    <div class="col-md-8">
+                                        <select id="ddlEdges" name="ddlEdges" class="form-control">
+                                            <option value="-1"></option>
+                                            <option value="-1">[VIEW EDGE GALLERY...]</option>
+                                            @foreach (var item in Model.Edges)
+                                            {
+                                                <option value="@item.EdgeID">@item.EdgeName - @item.Price</option>
+                                            }
+                                        </select>
+                                        <p class="help-block text-danger hidden">Please select Edge.</p>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <!-- Modal HTML -->
+                        <div id="modalMeasures" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title">Add Measurements</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table id="tblMeasures" class="table" style="margin-bottom:0;">
+                                            <thead>
+                                                <tr>
+                                                    <th>Measure</th>
+                                                    <th>Length</th>
+                                                    <th>Width</th>
+                                                    <th>Area</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng:repeat="item in measures.items">
+                                                    <td>
+                                                        <select id="measure" class="form-control input-xs" name="measure" ng-model="item.measurename">
+                                                            @foreach (var item in Model.Measures)
+                                                            {
+                                                                <option>@item.MeasureName</option>
+                                                            }
+                                                        </select>
+                                                    </td>
+                                                    <td><input id="length" type="text" class="form-control input-xs" name="length" ng-model="item.length" /></td>
+                                                    <td><input id="width" type="text" class="form-control input-xs" name="width" ng-model="item.width" /></td>
+                                                    <td><input type="text" class="form-control input-xs" name="total" ng-model="item.length * item.width / 144  | number:3" readonly></td>
+                                                    <td>[<a href ng-click="removeItem($index)" title="remove this measure">X</a>]</td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="5"><a data-ng-click="addItem()" class="btn btn-primary btn-xs">Add Measure</a></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                        <p class="alert alert-block alert-warning" ng-show="total() > 0"><em>To manually input Square Feet, you need to remove all measures you have entered.</em></p>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" id="btnSendTableData" class="btn btn-primary hidden" data-dismiss="modal">Save</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="modalEdges" class="modal fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title hidden-xs hidden-sm">Select Edge</h4>
+                                        <h4 class="modal-title hidden-md hidden-lg">Tap the Edge of your choice</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        @foreach (var item in Model.Edges)
+                                        {
+                                            if (item.ImageFilename != "temp.png")
+                                            {
+                                        <p class="col-xs-6 col-sm-4">
+                                            <a href="#" class="imgEdge" data-edgeid="@item.EdgeID" data-dismiss="modal"><img class="img-responsive" src="@Url.Content("~/img/edges/")@item.ImageFilename" alt="@item.EdgeName"></a>
+                                        </p>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6" style="padding-left:0;padding-right:0" ng-controller="SinkCtrl">
+            <div id="pnlSink" class="panel panel-primary">
+                <div class="panel-heading text-center">
+                    <h2>Sinks</h2>
+                    <h4>Choose the right sink for your countertops.</h4>
+                </div>
+                <div class="panel-body">
+                    <table id="tblSinks" class="table col-md-12">
+                        <thead>
+                            <tr>
+                                <th>Sink</th>
+                                <th><span class="hidden-xs">Quantity</span><span class="hidden-sm hidden-md hidden-lg">Qty</span></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng:repeat="item in sinks.items">
+                                <td class="col-md-10 col-xs-10">
+                                    <select id="ddlSink{{$index}}" class="ddlSink form-control" name="ddlSink" ng-model="item.sinkID" onchange="showSinkModal(this.options[this.selectedIndex].value, this.id)">
+                                        <option value="0"></option>
+                                        <option value="-1">[VIEW SINK GALLERY...]</option>
+                                        @foreach (var item in Model.Sinks)
+                                        {
+                                            <option value="@item.SinkID">@item.SinkName - @item.Price</option>
+                                        }
+                                    </select>
+                                    <span class="hidden"></span>
+                                </td>
+                                <td class="col-md-2 col-xs-2"><input id="sinkqty" type="text" class="sinkqty form-control" name="sinkqty" ng-model="item.sinkqty" /></td>
+                                <td>
+                                    <a href ng-click="removeItem($index)" class="btn btn-danger" title="Delete Sink {{$index + 1}}">X</a>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <a data-ng-click="addItem()" class="btn btn-primary btn-xs">Add Sinks</a>
+                                    <label class="btn btn-primary btn-xs pull-right hidden-sm hidden-md hidden-lg">
+                                        <input id="showSinkName" type="checkbox" autocomplete="off" class="hidden"> Toggle Fullname/Input
+                                    </label>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div id="modalSinks" class="modal fade">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close close-sinkmodal" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title hidden-xs hidden-sm">Select Sink</h4>
+                            <h4 class="modal-title hidden-md hidden-lg">Tap the Sink of your choice</h4>
+                        </div>
+                        <div class="modal-body">
+                            @foreach (var item in Model.Sinks)
+                            {
+                                if (!String.IsNullOrEmpty(item.ImageFilename))
+                                {
+                                    <div class="col-xs-12 col-sm-6">
+                                        <div class="box">
+                                            <a href class="imgSink" data-sinkid="@item.SinkID" data-dismiss="modal">
+                                                <img src="@Url.Content("~/img/sinks/thumb/")@item.ImageFilename" />
+                                                <span class="caption">
+                                                    <p>@item.SinkShortName - @item.Price</p>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default close-sinkmodal" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6" style="padding-left:0;padding-right:0">
+            <div id="pnlService" class="panel panel-primary">
+                <div class="panel-heading text-center">
+                    <h2>Services</h2>
+                    <h4>Tick the services you wish to include in this quote.</h4>
+                </div>
+                <div class="panel-body" style="padding-left:5px;padding-right:5px">
+                    <div class="table-responsive">
+                        <table id="tblServices" class="table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Services</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Services)
+                                {
+                                <tr>
+                                    <td><input type="checkbox" id="@item.ServicesID" /></td>
+                                    <td>@item.ServiceName</td>
+                                    <td>@item.ServicePrice</td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="panel panel-primary" style="overflow:hidden;">
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <p id="pCustomerHelpBlock">Make sure you have selected a stone color, entered SF quantity and chose edge for your countertops.<br /><br /></p>
+                </div>
+                <div class="col-md-8">
+                    <textarea rows="3" id="notes" class="form-control" placeholder="You may tell us additional detail and specs for this project..." elastic></textarea>
+                    <br class="hidden-md hidden-lg" />
+                </div>
+                <div id="divShowCustomerModal" class="col-md-4">
+                    <br class="hidden-xs hidden-sm" />
+                    <button id="ShowCustomerModal" class="btn btn-primary pull-right" data-toggle="modal" href="#modalCustomer" data-backdrop="static" data-keyboard="false" disabled>
+                        Enter Customer Info and submit your qoute
+                    </button>
+                </div>
+                </div>
+        </div>
+
+        <div class="modal fade" id="modalCustomer">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="customerquote-form" action="" method="post">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel2">Submit Your Quote</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Customer Info</h4>
+                                    <div class="form-group">Firstname<input name="CustomerFirstName" type="text" id="CustomerFirstName" class="form-control" /></div>
+                                    <div class="form-group">Surname<input name="CustomerLastName" type="text" id="CustomerLastName" class="form-control" /></div>
+                                    <div class="form-group">Phone Number<input name="Phone" type="text" id="Phone" class="form-control" /></div>
+                                    <div class="form-group">Email<input name="Email" type="text" id="Email" class="form-control" /></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>Job Site Info</h4>
+                                    <div class="form-group">Address<input name="Address" type="text" id="Address" class="form-control" /></div>
+                                    <div class="form-group">City<input name="City" type="text" id="City" class="form-control" /></div>
+                                    <div class="form-group">State<input name="State" type="text" id="State" value="Tx" class="form-control" /></div>
+                                    <div class="form-group">Zip<input name="Zipcode" type="text" id="Zipcode" class="form-control" /></div>
+                                </div>
+                                <div class="col-md-12">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="pull-left">
+                                <button type="button" id="cancel-quote" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            </div>
+                            <div class="pull-right">
+                                <div id="div-submit-quote">
+                                    <button type="submit" id="submit-quote" class="btn btn-primary ladda-button pull-right" data-style="zoom-out" disabled>
+                                        <span class="ladda-label">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Submit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                    </button>
+                                </div>
+                                <div class="col-xs-6 pull-right">
+                                    <div class="form-group">
+                                        <input type="text" id="verify_contact" name="verify_contact" class="form-control pull-right" placeholder="60 + 5 =" data-toggle="popover" data-placement="top" data-trigger="focus" title="Are you human?" data-content="" />
+                                    </div>
+                                </div>
+                                <div class="col-xs-3 pull-right hidden-xs" style="font-size:xx-small;line-height:10px;">
+                                    To prevent spam, please answer this simple math problem:
+                                </div>
+                            </div>
+                        </div>
+                    </form>                    
+                </div>
+            </div>
+        </div>
+
+
+        
+    </div>
+
+
+
+
+</div>
+
+<div class="row">
+    <button type="button" id="SubmitQuote" class="btn btn-default hidden">Test Submit</button>
+</div>
+
+
+
+
+@section scripts
+{
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-resource.js"></script>
+    <script src="@Url.Content("~/Scripts/ui-bootstrap-tpls-0.11.0.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/dfw.online-quote-ng.js")"></script>
+    <script src="@Url.Content("~/Scripts/jquery.json.min.js")"></script>
+    
+
+    <script src="@Url.Content("~/Scripts/formValidation.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/fv.bootstrap.min.js")"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ladda-bootstrap/0.9.4/spin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ladda-bootstrap/0.9.4/ladda.min.js"></script>
+
+    <script src="@Url.Content("~/Scripts/dfw.online-quote.js")"></script>
+    
+
+
+}

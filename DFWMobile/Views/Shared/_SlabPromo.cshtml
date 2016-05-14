@@ -1,0 +1,72 @@
+﻿@model DFWMobile.Models.ViewModels.HomePageVM
+
+<div class="row">
+    <div class="col-md-12 text-center add_bottom_15">
+        <h2 class="blink">@Model.slabPromoLabel.SlabPromoName</h2>
+        <p class="lead">
+            @Model.slabPromoLabel.SlabPromoDesc
+        </p>
+    </div><!--End col-md-12 -->
+</div><!--End row -->
+
+<div class="row">
+    <!-- Start col-md-6 --><div class="col-sm-6">
+        @{double maxRec = (double)Model.slabPromo.Count;}
+        @foreach (var item in Model.slabPromo.Select((value, i) => new { i, value }))
+        {
+            if (item.i < Math.Floor(maxRec / 2))
+            {
+                <div class="media list_home">
+                    <div class="pull-left">
+                        <a href="/mobile/OnlineQuote?SlabColorID=@item.value.SlabColorID">
+                            @if (!String.IsNullOrEmpty(item.value.ImageFilename))
+                            {
+                                <img src="/images/Slabs/thumb/@item.value.ImageFilename" width="80" height="60" alt="" class="img-rounded styled">
+                            }
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="p-title"><a href="/mobile/OnlineQuote?SlabColorID=@item.value.SlabColorID">@item.value.SlabColor</a> <span class="price_2">$@item.value.SlabPromoPrice</span></h4>
+                        <p>
+                            @item.value.SlabPromoNotes
+                        </p>
+                    </div>
+                </div><!-- End media list -->
+            }
+        }
+    </div><!-- End col-md-6 -->
+    <!-- Start col-md-6 --><div class="col-sm-6">
+        @foreach (var item in Model.slabPromo.Select((value, i) => new { i, value }))
+        {
+            if (item.i > Math.Ceiling(maxRec / 3))
+            {
+                <div class="media list_home">
+                    <div class="pull-left">
+                        <a href="/mobile/OnlineQuote?SlabColorID=@item.value.SlabColorID">
+                            @if (!String.IsNullOrEmpty(item.value.ImageFilename))
+                            {
+                                <img src="/images/Slabs/thumb/@item.value.ImageFilename" width="80" height="60" alt="" class="img-rounded styled">
+                            }
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="p-title"><a href="/mobile/OnlineQuote?SlabColorID=@item.value.SlabColorID">@item.value.SlabColor</a> <span class="price_2">$@item.value.SlabPromoPrice</span></h4>
+                        <p>
+                            @item.value.SlabPromoNotes
+                        </p>
+                    </div>
+                </div><!-- End media list -->
+            }
+        }
+    </div><!-- End col-md-6 -->
+
+</div><!-- End row -->
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        @if (!Model.slabPromoLabel.ShownAll)
+        {
+            <button id="ViewAllSlab" class="button_medium" style=" margin-bottom:0;">View all slab promos</button>
+        }
+    </div>
+</div><!-- End row -->

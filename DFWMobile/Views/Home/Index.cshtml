@@ -1,0 +1,695 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+@section css
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/owl.carousel.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/owl.theme.css")" />
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/formValidation.min.css")" />
+
+    <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/rs-plugin/css/settings.css")" media="all" />
+    <!-- color scheme -->
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/m/css/colors/color1.css")" title="color1" />
+
+}
+
+
+@section banner
+{
+    <!-- START #main-slider -->
+    <div id="main-slider">
+        <div id="content-slider">
+            <ul>
+                <!-- START Slide 1 -->
+                <li data-transition="fade" data-slotamount="5" data-masterspeed="700">
+                    <img src="img/slide-image-1.jpg" alt="Slider Image 1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" />
+
+                    <!-- LAYER NR. 1 -->
+                    <div class="caption caption-yellow sft stt headline text-upper"
+                         data-x="20"
+                         data-y="150"
+                         data-speed="600"
+                         data-start="2000"
+                         data-easing="Power3.easeOut"
+                         data-endspeed="400"
+                         data-endeasing="Power4.easeIn"
+                         data-captionhidden="off"
+                         style="z-index:6;font-size:18px;">
+                        Call Us Today! (817) 300-3298
+                    </div>
+
+                    <!-- LAYER NR. 2 -->
+                    <div class="caption caption-white sfr stl slider-heading text-upper"
+                         data-x="20"
+                         data-y="185"
+                         data-speed="1000"
+                         data-start="1800"
+                         data-easing="Power2.easeOut"
+                         data-endspeed="600"
+                         data-endeasing="Power3.easeIn"
+                         data-captionhidden="off"
+                         style="z-index:6;font-size:48px; ">
+                        Super Savings
+                    </div>
+
+                    <!-- LAYER NR. 3 -->
+                    <div class="caption caption-black sfb stb headline text-upper"
+                         data-x="20"
+                         data-y="263"
+                         data-speed="600"
+                         data-start="1500"
+                         data-easing="Power4.easeOut"
+                         data-endspeed="500"
+                         data-endeasing="Power1.easeIn"
+                         data-captionhidden="off"
+                         style="z-index:6">
+                        Your super savings place for granite in<br />
+                        Fort Worth Texas. Granite Fort Worth has<br />
+                        the best granite available at rates that<br />
+                        can not be beat.
+                    </div>
+                </li>
+                <!-- END Slide 1 -->
+                <!-- START Slide 2 -->
+                <li data-transition="fade" data-slotamount="7" data-masterspeed="1000">
+                    <img src="img/slide-image-2.jpg" alt="Slider Image 2" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" />
+
+                    <!-- LAYER NR. 1 -->
+                    <div class="caption caption-yellow sfl str headline text-upper"
+                         data-x="20"
+                         data-y="150"
+                         data-speed="600"
+                         data-start="2000"
+                         data-easing="Bounce.easeInOut"
+                         data-endspeed="400"
+                         data-endeasing="Bounce.easeOut"
+                         data-captionhidden="off"
+                         style="z-index:6;font-size:18px;">
+                        Call Us (817) 300-3298
+                    </div>
+
+                    <!-- LAYER NR. 2 -->
+                    <div class="caption caption-white sft stb slider-heading text-upper"
+                         data-x="20"
+                         data-y="185"
+                         data-speed="500"
+                         data-start="800"
+                         data-easing="Expo.easeIn"
+                         data-endspeed="600"
+                         data-endeasing="Expo.easeInOut"
+                         data-captionhidden="off"
+                         style="z-index:6;font-size:48px; ">
+                        Above And Beyond
+                    </div>
+
+                    <!-- LAYER NR. 3 -->
+                    <div class="caption caption-black sfr stl headline text-upper"
+                         data-x="20"
+                         data-y="263"
+                         data-speed="600"
+                         data-start="1500"
+                         data-easing="Power0.easeOut"
+                         data-endspeed="500"
+                         data-endeasing="Back.easeOut"
+                         data-captionhidden="off"
+                         style="z-index:6">
+                        Granite Fort Worth goes above and beyond to<br />
+                        provide you with the best in granite.<br />
+                        We publish all of our rates, so nothing<br />
+                        is hidden.
+                    </div>
+                </li>
+
+                <!-- START Slide 3 -->
+                <li data-transition="fade" data-slotamount="6" data-masterspeed="800">
+                    <img src="img/slide-image-3.jpg" alt="Slider Image 3" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" />
+
+                    <!-- LAYER NR. 1 -->
+                    <div class="caption caption-yellow sft stt headline text-upper"
+                         data-x="20"
+                         data-y="150"
+                         data-speed="600"
+                         data-start="2000"
+                         data-easing="Power3.easeOut"
+                         data-endspeed="400"
+                         data-endeasing="Power4.easeIn"
+                         data-captionhidden="off"
+                         style="z-index:6;font-size:18px;">
+                        Call Us (817) 300-3298
+                    </div>
+
+                    <!-- LAYER NR. 2 -->
+                    <div class="caption caption-white sfr stl slider-heading text-upper"
+                         data-x="20"
+                         data-y="185"
+                         data-speed="1000"
+                         data-start="1800"
+                         data-easing="Power2.easeOut"
+                         data-endspeed="600"
+                         data-endeasing="Power3.easeIn"
+                         data-captionhidden="off"
+                         style="z-index:6;font-size:48px; ">
+                        Satisfaction Guaranteed
+                    </div>
+
+                    <!-- LAYER NR. 3 -->
+                    <div class="caption caption-black sfb stb headline text-upper"
+                         data-x="20"
+                         data-y="263"
+                         data-speed="600"
+                         data-start="1500"
+                         data-easing="Power4.easeOut"
+                         data-endspeed="500"
+                         data-endeasing="Power1.easeIn"
+                         data-captionhidden="off"
+                         style="z-index:6">
+                        When it comes to credibility, there is<br />
+                        nothing better than being a part of an<br />
+                        organization that will hold a company<br />
+                        accountable for their actions.
+                    </div>
+                </li>
+                <!-- END Slide 3 -->
+                <!-- START Slide 4 -->
+                <li data-transition="fade" data-slotamount="6" data-masterspeed="800">
+                    <img src="img/slide-image-4.jpg" alt="Slider Image 3" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat" />
+
+                    <!-- LAYER NR. 1 -->
+                    <div class="caption caption-yellow sft stt headline text-upper"
+                         data-x="20"
+                         data-y="150"
+                         data-speed="600"
+                         data-start="2000"
+                         data-easing="Power3.easeOut"
+                         data-endspeed="400"
+                         data-endeasing="Power4.easeIn"
+                         data-captionhidden="off"
+                         style="z-index:6;font-size:18px;">
+                        Call Us (817) 300-3298
+                    </div>
+
+                    <!-- LAYER NR. 2 -->
+                    <div class="caption caption-white sfr stl slider-heading text-upper"
+                         data-x="20"
+                         data-y="185"
+                         data-speed="1000"
+                         data-start="1800"
+                         data-easing="Power2.easeOut"
+                         data-endspeed="600"
+                         data-endeasing="Power3.easeIn"
+                         data-captionhidden="off"
+                         style="z-index:6;font-size:48px; ">
+                        Get Started
+                    </div>
+
+                    <!-- LAYER NR. 3 -->
+                    <div class="caption caption-black sfb stb headline text-upper"
+                         data-x="20"
+                         data-y="263"
+                         data-speed="600"
+                         data-start="1500"
+                         data-easing="Power4.easeOut"
+                         data-endspeed="500"
+                         data-endeasing="Power1.easeIn"
+                         data-captionhidden="off"
+                         style="z-index:6">
+                        We make it very easy to work with us.<br />
+                        Our professionals are <a href="contact.aspx">here</a><br />
+                        for you to answer any questions or concerns.
+                    </div>
+                </li>
+                <!-- END Slide 4 -->
+            </ul>
+        </div>
+        <div id="slider-overlay"></div>
+    </div>
+    <!-- END #main-slider -->
+}
+
+
+
+
+<div class="row">
+    <div class="col-md-4 hidden-md hidden-lg" style="margin-bottom:20px;">
+        <div class="box_container">
+            <a style="font-family:'Times New Roman', Times, serif;-webkit-border-radius: 20px;-moz-border-radius: 20px;border-radius: 20px;border:5px solid #29A036;background-color:#FFFFFF;-webkit-box-shadow: #B3B3B3 2px 2px 2px;-moz-box-shadow: #B3B3B3 2px 2px 2px; box-shadow: #B3B3B3 2px 2px 2px;">
+                <div style="position:absolute;background:url(http://granitesouthlake.com/Images/SSA_Logo_250x250.png) top right no-repeat;background-position:15px 0;height:250px;width:150px;top:-60px;right:-20px;background-size:100%;overflow-x:hidden;margin:0;"></div>
+                <h3 style="font-family:'Times New Roman', Times, serif;"><span style="color:#6A0000">DFW WHOLESALE GRANITE</span> Earns Esteemed 2014 Angie’s List Super Service Award</h3>
+                <p style="font-style:italic;text-decoration:underline;">Award reflects company’s consistently high level of customer service</p>
+                <p>
+                    DFW Wholesale Granite has earned the service industry’s coveted Angie’s List Super Service Award, reflecting an exemplary year of service provided to members of the local services marketplace and consumer review site in 2014.
+                </p>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="box_container">
+            <a href="../FAQ.aspx">
+                <i class="icon-flag"></i>
+                <h3>About <br />Us</h3>
+                <p>
+                    At DFW Wholesale Granite, we believe in taking the personal approach.
+                </p>
+                <p>
+                    Our Mission is to serve our customers by building and installing the highest quality countertops with the best service at a fair price.
+                </p>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="box_container">
+            <a href="../Showrooms.aspx">
+                <i class="icon-address"></i>
+                <h3>Visit Our Showrooms</h3>
+                <p>
+                    We utilize the most sophisticated equipment with conventional production process to achieve the best quality in the shortest time.
+                </p>
+                <p>
+                    We strongly advise that you choose the slabs in person at our showroom.
+                </p>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="box_container">
+            <a href="../KitchenGallery.aspx">
+                <i class="icon-tags"></i>
+                <h3>Gallery of Kitchens</h3>
+                <p>
+                    We started as a one man shop and grew steadily. We currently install hundreds of countertops per year.
+                </p>
+                <p>
+                    See examples of kitchen countertops and other granite and marble projects.
+                </p>
+            </a>
+        </div>
+    </div>
+</div><!--End row-->
+@*<hr class="rope">*@
+
+
+<div id="_SlabPromo">
+    <!-- SlabPromo partial view content will be inserted here -->
+    @{Html.RenderPartial("_SlabPromo");}
+</div>
+
+<hr>
+<div class="row">
+
+    <div class="col-md-6">
+        <h4>Gorgeous Wholesale Granite</h4>
+        <p>
+            DFW Wholesale Granite Fort Worth is your super savings place for granite in Fort Worth, Texas. Granite Fort Worth has the best granite available at rates that can not be beat. We have agreements with all pertinent granite vendors and can offer wholesale granite prices to YOU! Not only that but we were selected to represent The Good Contractors List for wholesale granite and countertops!
+        </p>
+        <div class="col-md-12 hidden-sm hidden-xs" style="background:url(http://granitesouthlake.com/juicebox/images/KitchenGallery/0.jpg) repeat-y fixed; box-shadow: 3px 3px 5px rgba(0,0,0,.5);rgba(0,0,0,.5)">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+        </div>
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="feature-box">
+            <div class="feature-box-icon">
+                <i class="icon-phone"></i>
+            </div>
+            <div class="feature-box-info">
+                <h4>@Html.ActionLink("CONTACT US", "Contact", "Home")</h4>
+                <p>
+                    We look forward to serving you and would be delighted to hear from you!
+                </p>
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-box-icon">
+                <i class="icon-qq"></i>
+            </div>
+            <div class="feature-box-info">
+                <h4>SINKS</h4>
+                <p>
+                    Find the perfect sink for your needs at a great price.
+                </p>
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-box-icon">
+                <i class="icon-popup"></i>
+            </div>
+            <div class="feature-box-info">
+                <h4>EDGES</h4>
+                <p>
+                    We have the most popular edges for bathrooms and kitchens.
+                </p>
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-box-icon">
+                <i class="icon-cloud"></i>
+            </div>
+            <div class="feature-box-info">
+                <h4>@Html.ActionLink("FREE ONLINE QUOTE", "Index", "OnlineQuote")</h4>
+                <p>
+                    Calculate the estimated price of the right countertop for your taste and budget.
+                </p>
+            </div>
+        </div>
+
+        <div class="feature-box">
+            <div class="feature-box-icon">
+                <i class="icon-edit"></i>
+            </div>
+            <div class="feature-box-info">
+                <h4>@Html.ActionLink("FREE ESTIMATE", "Contact", "Home")</h4>
+                <p>
+                    Please feel free to fill out our request form for questions, comments, or to request a FREE Estimate.
+                </p>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div><!-- End row -->
+
+<hr>
+<div class="row" id="scrollhere">
+    <div class="col-md-6">
+        <h4>Testimonials</h4>
+        <p>
+            These are just a few of the comments we have received from our clients. We are eager to show you why our clients refer us on a consistent basis.
+        </p>
+        <div class="carousel">
+            <div>
+                <blockquote class="testimonial">
+                    <p>
+                        We were amazed at how beautiful our countertops turned out! You completely changed the look of our kitchen. We really enjoyed working with you guys and will definitely recommend you to our friends and family! Thanks again!
+                    </p>
+                </blockquote>
+                <div class="testimonial-arrow-down">
+                </div>
+                <div class="testimonial-author">
+                    <p>
+                        <strong>John & Cindy H.</strong><span>Mansfield, TX</span>
+                    </p>
+                </div>
+            </div>
+            <div>
+                <blockquote class="testimonial">
+                    <p>
+                        Great job! We were impressed with how quickly you were able to complete our granite countertops from start to finish. You were very professional and we will use you when we get ready to do our bathrooms.
+                    </p>
+                </blockquote>
+                <div class="testimonial-arrow-down">
+                </div>
+                <div class="testimonial-author">
+                    <p>
+                        <strong>Tony D.</strong><span>Fort Worth, TX</span>
+                    </p>
+                </div>
+            </div>
+            <div>
+                <blockquote class="testimonial">
+                    <p>
+                        You really did a great job on my kitchen! You did everything that you said you would do and completed everything ahead of schedule. Being a single mom, I was nervous about finding the right company, and I just wanted to say thank you for making this a pleasant experience.
+                    </p>
+                </blockquote>
+                <div class="testimonial-arrow-down">
+                </div>
+                <div class="testimonial-author">
+                    <p>
+                        <strong>Chelsea R.</strong><span>Fort Worth, TX</span>
+                    </p>
+                </div>
+            </div>
+            <div>
+                <blockquote class="testimonial">
+                    <p>
+                        We did a lot of research before we finally chose your company. You exceeded our expectations and your rates were the best out of all the other companies we contacted.
+                    </p>
+                </blockquote>
+                <div class="testimonial-arrow-down">
+                </div>
+                <div class="testimonial-author">
+                    <p>
+                        <strong>James & Christie J.</strong><span>Saginaw, TX</span>
+                    </p>
+                </div>
+            </div>
+        </div><!-- End carousel -->
+
+    </div>
+    <hr class="hidden-sm hidden-md hidden-lg" />
+    <div class="col-md-6">
+        <div id="divContact">
+            <h4>Send us a message</h4>
+            <p>Please feel free to fill out this form for your inquiries or to request a FREE Estimate.</p>
+            <div id="message-contact"></div>
+            <form method="post" action="@Url.Content("~/SendContact")" id="contactform">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control style_2" id="name_contact" name="name_contact" placeholder="Enter Name">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <input type="text" id="phone_contact" name="phone_contact" class="form-control style_2" placeholder="Enter Phone Number">
+                        </div>
+                    </div>
+
+                </div><!-- End row -->
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <input type="text" id="streetcity_contact" name="streetcity_contact" class="form-control style_2" placeholder="Enter Street, City Zip">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <input type="email" id="email_contact" name="email_contact" class="form-control style_2" placeholder="Enter Email">
+                        </div>
+                    </div>
+
+                </div><!-- End row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <textarea rows="10" id="message_contact" name="message_contact" class="form-control style_2" placeholder="Write your message" style="height:80px;"></textarea>
+                        </div>
+                    </div>
+                </div><!-- End row -->
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="text" id="verify_contact" name="verify_contact" class=" form-control style_2" placeholder="">
+                        </div>
+                    </div>
+                    <input type="submit" value="Submit" id="submit-contact" disabled="disabled" />
+                </div><!-- End row -->
+            </form>
+
+
+        </div>
+
+        <div id="divContactMessage">
+            <h4>Message Submitted.</h4>
+            <p>
+                Thank you for contacting DFW Wholesale Granite.
+                Our customer service staff will get back to you shortly.
+                In the meantime, please feel free to take a look at our <a href="/FAQ.aspx">FAQ</a> page if you haven&#39;t already, as your question may already have been answered there.
+            </p>
+            <p>
+                We are also pleased to inform you about our <a href="/onlinequote">Online Quote System</a>, a do-it-yourself web-based tool on creating your own Quotation for your project.
+                Use it for free and achieve cost estimates close to final computation!
+            </p>
+            <p>
+                If your concern is urgent, please give us a call <a href="tel:8173003298">(817) 300-3298</a>.
+            </p>
+        </div>
+    </div>
+</div><!-- End row -->
+
+<hr>
+<div class="row">
+    <p>
+        <img src="@Url.Content("~/img/sponsors.jpg")" class="img-responsive" alt="sponsor">
+    </p>
+</div>
+
+
+@section scripts
+{
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
+    <script type="text/javascript" src="@Url.Content("~/Content/rs-plugin/js/jquery.plugins.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/rs-plugin/js/jquery.revolution.min.js")"></script>
+
+    <!--[if lt IE 9]>
+        <script type="text/javascript" src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script src="@Url.Content("~/Scripts/formValidation.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/fv.bootstrap.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/owl.carousel.min.js")"></script>
+
+    <script type='text/javascript'>
+        $(window).load(function () {
+
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function () {
+
+            // Generate a simple captcha
+            function randomNumber(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+            $('#verify_contact').attr("placeholder", "Are you human? " + [randomNumber(1, 9), '+', randomNumber(10, 99), '='].join(' '));
+
+            $('#contactform').formValidation({
+                framework: 'bootstrap',
+                icon: {
+                    valid: 'icon-ok',
+                    invalid: 'icon-cancel',
+                    validating: 'icon-spin2'
+                },
+                container: 'popover',
+                fields: {
+                    name_contact: {
+                        row: '.col-xs-4',
+                        validators: {
+                            notEmpty: {
+                                message: 'Name is required'
+                            }
+                        }
+                    },
+                    email_contact: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The email address is required'
+                            },
+                            emailAddress: {
+                                message: 'Not a valid email address'
+                            }
+                        }
+                    },
+                    verify_contact: {
+                        validators: {
+                            callback: {
+                                message: 'Wrong answer',
+                                callback: function (value, validator, $field) {
+                                    //var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
+                                    var items = $('#verify_contact').attr("placeholder").split(' '), sum = parseInt(items[3]) + parseInt(items[5]);
+                                    return value == sum;
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+            .on('success.form.fv', function (e) {
+                $('#submit-contact').attr('disabled', 'disabled');
+
+                // Prevent form submission
+                e.preventDefault();
+
+                // Get the form instance
+                var $form = $(e.target);
+
+                // Get the FormValidation instance
+                var bv = $form.data('formValidation');
+
+                /* get some values from elements on the page: */
+                var $form = $(this),
+                    url = $form.attr('action');
+
+                /* Send the data using post */
+                var posting = $.post(url, {
+                    name: $('#name_contact').val(),
+                    streetcity: $('#streetcity_contact').val(),
+                    phone: $('#phone_contact').val(),
+                    email: $('#email_contact').val(),
+                    msg: $('#message_contact').val()
+                });
+
+                /* Alerts the results */
+                posting.done(function (data) {
+                    alert(data);
+                    //$('#divContact').prop('class', 'hidden');
+                    //$('#divMessage').prop('class', 'col-md-6');
+                    //$('#divContact').toggle('slide', { direction: 'left' }, 500);
+                    //$('#divMessage').toggle('slide', { direction: 'right' }, 500);
+                    //$('html, body').animate({ scrollTop: $('#scrollhere').offset().top }, 'slow');
+                    $("#scrollhere").attr("tabindex", -1).focus();
+                    $('#divContact').slideToggle();
+                    $('#divContactMessage').slideToggle();
+                });
+            });
+        });
+    </script>
+
+    <script>
+        //Carousel
+        $(document).ready(function () {
+            //Carousel
+            $(".carousel").owlCarousel({
+                items: 1,
+                singleItem: true,
+                responsive: true,
+                autoHeight: true,
+                transitionStyle: "fade"
+            });
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // revolution slider
+            revapi = $("#content-slider").revolution({
+                delay: 15000,
+                startwidth: 1170,
+                startheight: 920,
+                hideThumbs: 10,
+                fullWidth: "on",
+                fullScreen: "off",
+                fullScreenOffsetContainer: "",
+                navigationVOffset: 320
+            });
+
+
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#ViewAllSlab").on("click", function () {
+                $.ajax({
+                    url: "@Url.Content("~/SlabPromo")",
+                    type: "GET",
+                    data: { limit: 0 }
+                })
+                .done(function (partialViewResult) {
+                    $("#_SlabPromo").html(partialViewResult);
+                    $("#ViewAllSlab").hide();
+                });
+            });
+        });
+    </script>
+
+
+
+}

@@ -1,0 +1,236 @@
+﻿@{
+    ViewBag.Title = "Contact";
+}
+
+@section css
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/formValidation.min.css")" />
+}
+
+@section banner
+{
+
+    <!-- START #page-header -->
+    <div id="header-banner" style="">
+        <div class="banner-overlay">
+            <div class="container">
+                <div class="row">
+                    <section class="col-sm-12">
+                        <h1 class="text-upper">Contact</h1>
+                    </section>
+
+                    <!-- breadcrumbs -->
+                    <section class="col-sm-12">
+                        <ol class="breadcrumb">
+                            <li><i class="icon-home"></i>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>Contact Us</li>
+                        </ol>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END #page-header -->
+       
+}
+
+
+<div class="row">
+    <!-- START #page -->
+    <div id="page" class="col-md-8">
+        <!-- GOOGLE MAP -->
+        <section id="contactMap">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3349.221826379982!2d-97.33418900000001!3d32.91873700000001!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd9b7e05c5364e793!2sDFW+Wholesale+Granite+Fort+Worth!5e0!3m2!1sen!2sph!4v1404060246627" width="600" height="450" frameborder="0" style="border:0"></iframe>
+        </section>
+
+        <div class="col-md-12" id="divContact">
+            <h3>Please write us</h3>
+            <p>Please feel free to fill out this form if you need further details or if you wish to request a FREE Estimate.</p>
+            <div id="message-contact"></div>
+            <form method="post" action="@Url.Content("~/SendContact")" id="contactform">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control style_2" id="name_contact" name="name_contact" placeholder="Enter Name">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <input type="text" id="phone_contact" name="phone_contact" class="form-control style_2" placeholder="Enter Phone Number">
+                        </div>
+                    </div>
+
+                </div><!-- End row -->
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <input type="text" id="streetcity_contact" name="streetcity_contact" class="form-control style_2" placeholder="Enter Street, City Zip">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-group">
+                            <input type="email" id="email_contact" name="email_contact" class="form-control style_2" placeholder="Enter Email">
+                        </div>
+                    </div>
+
+                </div><!-- End row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <textarea rows="10" id="message_contact" name="message_contact" class="form-control style_2" placeholder="Write your message" style="height:80px;"></textarea>
+                        </div>
+                    </div>
+                </div><!-- End row -->
+                <div class="row">
+                    <input type="text" id="verify_contact" name="verify_contact" class=" form-control style_2" placeholder="">
+                    <input type="submit" value="Submit" id="submit-contact" disabled="disabled" />
+                </div><!-- End row -->
+            </form>
+
+
+        </div>
+
+        <div class="hidden" id="divMessage">
+            <h4>Thank you for contacting DFW Wholesale Granite.</h4>
+            <p>
+                Our customer service staff will get back to you shortly.
+                In the meantime, please feel free to take a look at our <a href="/FAQ.aspx">FAQ</a> page if you haven&#39;t already, as your question may already have been answered there.
+            </p>
+            <p>
+                We are also pleased to inform you about our <a href="/onlinequote">Online Quote System</a>, a do-it-yourself web-based tool on creating your own Quotation for your project.
+                Use it for free and achieve cost estimates close to final computation!
+            </p>
+            <p>
+                If your concern is urgent, please give us a call <a href="tel:8173003298">(817) 300-3298</a>.
+            </p>
+        </div>
+    </div>
+    <!-- END #page -->
+    <!-- START #sidebar -->
+    <aside id="sidebar" class="col-md-4">
+
+        <div class="sidebar-widget">
+            <!-- Sidebar Contact info -->
+            <div class="styled-box gray">
+                <h3>Contact Us</h3>
+                <p>We look forward to serving you and would love to hear from you. Please feel free to give us a call or simply fill out the enquiry form with any questions, comments, or requests for a free estimate.</p>
+                <ul class="contact-info list-unstyled">
+                    <li><strong>Office Location: </strong>DFW WHOLESALE GRANITE</li>
+                    <li>10011 Harmon Road, Suite 101, Fort Worth Texas 76177</li>
+                    <li><i class="icon-phone"></i><a href="tel:8173003298">(817) 300-3298</a> </li>
+                    <li>
+                        <i class="icon-email"></i> <a href="mailto:info@granitesouthlake.com">
+                            info@granitesouthlake.com
+                            <script type="text/javascript">
+                                (function () { try { var s, a, i, j, r, c, l, b = document.getElementsByTagName("script"); l = b[b.length - 1].previousSibling; a = l.getAttribute('data-cfemail'); if (a) { s = ''; r = parseInt(a.substr(0, 2), 16); for (j = 2; a.length - j; j += 2) { c = parseInt(a.substr(j, 2), 16) ^ r; s += String.fromCharCode(c); } s = document.createTextNode(s); l.parentNode.replaceChild(s, l); } } catch (e) { } })();
+                            </script>
+                        </a>
+                    </li>
+                    <li>
+                        <i class="icon-email"></i> <a href="mailto:info@granitefortworth.net">
+                            info@granitefortworth.net
+                            <script type="text/javascript">
+                                (function () { try { var s, a, i, j, r, c, l, b = document.getElementsByTagName("script"); l = b[b.length - 1].previousSibling; a = l.getAttribute('data-cfemail'); if (a) { s = ''; r = parseInt(a.substr(0, 2), 16); for (j = 2; a.length - j; j += 2) { c = parseInt(a.substr(j, 2), 16) ^ r; s += String.fromCharCode(c); } s = document.createTextNode(s); l.parentNode.replaceChild(s, l); } } catch (e) { } })();
+                            </script>
+                        </a>
+                    </li>
+                    <li class="icon-gplus-1">google.com/+GraniteSouthlakeFortworth</li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <!-- END #sidebar -->
+</div>
+<!-- END .row -->
+
+
+@section scripts
+{
+    <script src="@Url.Content("~/Scripts/formValidation.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/fv.bootstrap.min.js")"></script>
+    <script>
+            $(document).ready(function () {
+
+                // Generate a simple captcha
+                function randomNumber(min, max) {
+                    return Math.floor(Math.random() * (max - min + 1) + min);
+                }
+                $('#verify_contact').attr("placeholder", "Are you human? " + [randomNumber(1, 9), '+', randomNumber(10, 99), '='].join(' '));
+
+                $('#contactform').formValidation({
+                    framework: 'bootstrap',
+                    icon: {
+                        valid: 'icon-ok',
+                        invalid: 'icon-cancel',
+                        validating: 'icon-spin2'
+                    },
+                    container: 'popover',
+                    fields: {
+                        name_contact: {
+                            row: '.col-xs-4',
+                            validators: {
+                                notEmpty: {
+                                    message: 'Name is required'
+                                }
+                            }
+                        },
+                        email_contact: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'The email address is required'
+                                },
+                                emailAddress: {
+                                    message: 'Not a valid email address'
+                                }
+                            }
+                        },
+                        verify_contact: {
+                            validators: {
+                                callback: {
+                                    message: 'Wrong answer',
+                                    callback: function (value, validator, $field) {
+                                        //var items = $('#captchaOperation').html().split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
+                                        var items = $('#verify_contact').attr("placeholder").split(' '), sum = parseInt(items[3]) + parseInt(items[5]);
+                                        return value == sum;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                })
+                .on('success.form.fv', function (e) {
+                    alert('ok');
+                    $('#submit-contact').attr('disabled', 'disabled');
+
+                    // Prevent form submission
+                    e.preventDefault();
+
+                    // Get the form instance
+                    var $form = $(e.target);
+
+                    // Get the FormValidation instance
+                    var bv = $form.data('formValidation');
+
+                    /* get some values from elements on the page: */
+                    var $form = $(this),
+                        url = $form.attr('action');
+
+                    ///* Send the data using post */
+                    //var posting = $.post(url, {
+                    //    name: $('#name_contact').val(),
+                    //    streetcity: $('#streetcity_contact').val(),
+                    //    phone: $('#phone_contact').val(),
+                    //    email: $('#email_contact').val(),
+                    //    msg: $('#message_contact').val()
+                    //});
+
+                    ///* Alerts the results */
+                    //posting.done(function (data) {
+                    //    alert(data);
+                    //    $('#divContact').prop('class', 'hidden');
+                    //    $('#divMessage').prop('class', 'col-md-12');
+                    //});
+                });
+            });
+    </script>
+}

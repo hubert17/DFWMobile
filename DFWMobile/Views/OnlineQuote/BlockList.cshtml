@@ -1,0 +1,32 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>BlockList</title>
+    <style>
+        html {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div> 
+        <h1>Blocklisted Email Addresses</h1>
+        <h3><em>Due to abusive and unauthorized use of Online Quote System</em></h3>
+        <h4>@ViewBag.Msg</h4>
+        @using (Html.BeginForm())
+        {
+            @Html.TextArea("blocklist", (string)ViewBag.BlockList, new { @cols = "50", @rows = "20" })
+            <br />
+            <button type="submit">Save</button>
+            <button type="reset">Discard</button>
+        }
+    </div>
+</body>
+</html>

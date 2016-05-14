@@ -1,0 +1,195 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    /*margin-top: -200px;*/
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    /*max-width: 280px;*/
+}
+
+.col-gabs-50 {
+    width:50%;
+    display:inline-block;
+}
+
+.col-gabs-40 {
+    width:40%;
+    display:inline-block;
+}
+
+ /* Prevent the Angular html template from being briefly displayed by the browser in its raw (uncompiled) form */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+
+/* header banner */
+#main-slider {width:100%; height:920px; position:relative;z-index:0;}
+#content-slider {width:100%; height:920px; position:relative; overflow:hidden;}
+#content-slider ul {padding:0; list-style:none; position:relative;}
+#content-slider ul li {width:100%; position:absolute; top:0; left:0;}
+#slider-overlay {width:100%; position:absolute; bottom:0; left:0; z-index:80; background:-moz-linear-gradient(top, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%); background:-webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,1))); background:-webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); background:-o-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); background:-ms-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%); background:linear-gradient(to bottom, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);}
+.slider-heading {margin:0; padding:0;}
+.caption-yellow, .caption-white, .caption-black {padding:5px 10px;}
+.caption-yellow {background:#ffe300;}
+.caption-white {background:#fff;line-height:68px;}
+.caption-black {color:#fff; background:#131516;}
+#header-banner {background:url(../img/header-banner.jpg) center 0 no-repeat;}
+.banner-overlay {padding:60px 0; background:rgba(50, 0, 0, 0.50);}
+#header-banner h1 {color:#fff; margin:0;}
+#home-page {position:relative; z-index:92; margin-top:-300px;}
+#page {margin-bottom:10px;}
+.styled-box {float:left; width:100%; padding:20px 20px 0; border-bottom:1px solid #d6d6d6;}
+
+#header-banner .banner-overlay .container { text-align: center; }
+.breadcrumb { color: #B3B3B3; }
+.breadcrumb a { color: #ff6f6f; }
+
+/* Sidebar */
+.sidebar-widget {float:left; width:100%; margin-bottom:30px;background:#f1f1f1;}
+.sidebar-widget h3 {margin-bottom:20px; margin-top:0;}
+.sidebar-widget .tab-content {margin:0;}
+
+/* contact */
+#contactMap, #contactForm {float:left; width:100%; margin-bottom:20px;}
+#contactMap {height:360px;}
+#contactMap iframe {
+    height: 100%;
+    width: 100%;
+}
+
+#divContactMessage { display:none; }
+
+
+
+
+/*Bootstrap Primary Button*/
+.btn-primary {
+    background: #6A0000;
+    color: #ffffff;
+    border-color: #b00000;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #b00000;
+    border-color: #6A0000;
+}
+ 
+.btn-primary:active, .btn-primary.active {
+    background: #b00000;
+    border-color: #6A0000;
+}
+
+/*Bootstrap Modal Header*/
+.modal-header {
+    padding:9px 15px;
+    border-bottom:1px solid #6A0000;
+    background-color: #b00000;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+ }
+.modal-title {
+    color: #fff;
+}
+
+/*@media block*/
+/*Bootstrap XS*/
+@media(max-width:767px){
+    body {
+        margin-top:50px;
+        /*overflow-x: hidden;*/
+    }
+    .body-content {
+        margin-top:15px;
+    }
+    #slider-overlay{
+        height: 0;
+    }
+    #main-slider{
+        height: auto;
+    }
+    .banner-overlay h1.text-upper {
+        text-align: center;
+    }
+    .breadcrumb {
+        float: none;
+        text-align: center;
+        color:#fff;
+    }
+    .breadcrumb a {
+        float: none;
+        text-align: center;
+        color:#ffaaaa;
+    }
+    #header-banner {margin-bottom:40px;}
+    .modal-body {
+        max-height: calc(100vh - 150px);
+        overflow-y: auto;
+    }
+}
+/*Bootstrap SM*/
+@media(min-width:768px){
+    body {
+        margin-top:30px;
+    }
+    .body-content {
+        margin-top:-150px;
+    }
+    #slider-overlay{
+        height: 200px;
+    }
+    #main-slider{
+        height: auto;
+    }
+    #header-banner {
+      margin-bottom: 200px;
+      margin-top: 50px !important;
+    }
+}
+/*Bootstrap MD*/
+@media(min-width:992px){
+    #slider-overlay{
+        height:200px;
+    }
+    #pnlSink, #pnlService {
+        height: calc(100vh - 140px);
+        overflow-y:auto;
+    }
+}
+/*Bootstrap LG*/
+@media(min-width:1200px){
+
+}
+
+
+/*Creates blingking text*/
+.blink {
+    animation: blink .5s steps(5, start) infinite;
+    -webkit-animation: blink .5s steps(5, start) infinite;
+}
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+@-webkit-keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+

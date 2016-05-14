@@ -1,0 +1,199 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+
+
+@section css
+{
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/formValidation.min.css")" />
+    <style>
+        .body-content {
+          margin-top: 150px;
+        }
+    </style>
+}
+
+
+<div class="row">
+    <div class="panel panel-primary" >
+        <div class="panel-body">
+            <div id="divShowCustomerModal" class="col-md-4">
+                <br class="hidden-xs hidden-sm" />
+                <br class="hidden-xs hidden-sm" />
+                <button id="ShowCustomerModal" class="btn btn-primary pull-right" data-toggle="modal" href="#modalCustomer" data-backdrop="static" data-keyboard="false">
+                    Enter Customer Info and submit your qoute
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalCustomer">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <form id="customerquote-form" action="" method="post">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="myModalLabel2">Submit Your Quote</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Customer Info</h4>
+                                <div class="form-group">Firstname<input name="CustomerFirstName" type="text" id="CustomerFirstName" class="form-control" /></div>
+                                <div class="form-group">Surname<input name="CustomerLastName" type="text" id="CustomerLastName" class="form-control" /></div>
+                                <div class="form-group">Phone Number<input name="Phone" type="text" id="Phone" class="form-control" /></div>
+                                <div class="form-group">Email<input name="Email" type="text" id="Email" class="form-control" /></div>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Job Site Info</h4>
+                                <div class="form-group">Address<input name="Address" type="text" id="Address" class="form-control" /></div>
+                                <div class="form-group">City<input name="City" type="text" id="City" class="form-control" /></div>
+                                <div class="form-group">State<input name="State" type="text" id="State" value="Tx" class="form-control" /></div>
+                                <div class="form-group">Zip<input name="Zipcode" type="text" id="Zipcode" class="form-control" /></div>
+                            </div>
+                            <div class="col-md-12">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="pull-left">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                        <div class="pull-right">
+                            <div>
+                                <button id="submit-quote" type="submit" class="btn btn-primary pull-right" disabled>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Submit &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="form-group">
+                                    <input type="text" id="verify_contact" name="verify_contact" class="form-control pull-right" placeholder="60 + 5 =" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    
+</div>
+
+
+
+
+
+
+
+
+
+@section scripts
+{
+    <script src="@Url.Content("~/Scripts/formValidation.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/fv.bootstrap.min.js")"></script>
+    <script>
+    $(document).ready(function () {
+        // Generate a simple captcha
+        function randomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+        var qMath = [randomNumber(1, 9), '+', randomNumber(10, 90), '='].join(' ');
+        $('#verify_contact').attr("placeholder", qMath);
+        $('#verify_contact').attr("title", 'Are you human? ' + qMath);
+
+        $('#customerquote-form').formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'icon-ok',
+                invalid: 'icon-cancel',
+                validating: 'icon-spin2'
+            },
+            container: 'popover',
+            fields: {
+                CustomerFirstName: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Firstname is required'
+                        }
+                    }
+                },
+                CustomerLastName: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Surname is required'
+                        }
+                    }
+                },
+                Phone: {
+                    validators: {
+                        notEmpty: {
+                            message: 'Phone is required'
+                        }
+                    }
+                },
+                Email: {
+                    validators: {
+                        notEmpty: {
+                            message: 'The email address is required'
+                        },
+                        emailAddress: {
+                            message: 'Not a valid email address'
+                        }
+                    }
+                },
+                verify_contact: {
+                    validators: {
+                        callback: {
+                            message: 'Wrong answer',
+                            callback: function (value, validator, $field) {
+                                var items = $('#verify_contact').attr("placeholder").split(' '), sum = parseInt(items[0]) + parseInt(items[2]);
+                                return value == sum;
+                            }
+                        }
+                    }
+                }
+            }
+        })
+        .on('success.field.fv', function (e, data) {
+            if (data.fv.getInvalidFields().length > 0) {    // There is invalid field
+                data.fv.disableSubmitButtons(true);
+                alert('ok');
+            }
+        })
+        .on('success.form.fv', function (e) {
+            //$('#submit-quote').attr('disabled', 'disabled');
+            $('#submit-quote').prop('disabled', false);
+            alert('ok');
+            // Prevent form submission
+            e.preventDefault();
+
+            // Get the form instance
+            var $form = $(e.target);
+
+            // Get the FormValidation instance
+            var bv = $form.data('formValidation');
+
+            /* get some values from elements on the page: */
+            var $form = $(this),
+                url = $form.attr('action');
+
+            /* Send the data using post */
+            var posting = $.post(url, {
+
+            });
+
+            /* Alerts the results */
+            posting.done(function (data) {
+                alert(data);
+            });
+        });
+    });
+    </script>
+
+
+}
