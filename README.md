@@ -1,2 +1,2 @@
 # DFWMobile
-Quote Estimate Webapp - DFW Wholesale Granite
+Responsive Quote Estimate Webapp - DFW Wholesale Granite
